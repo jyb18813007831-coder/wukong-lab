@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wukong-lab.local/schemas/step.schema.json",
+  "title": "WukongLabStep",
+  "description": "实验步骤 ID 与元数据，供小程序与远期实验智能体调用。",
+  "type": "object",
+  "required": ["id", "title", "module"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(\\.[a-z0-9_]+)+$", "examples": ["wb.sample_prep"] },
+    "title": { "type": "string" },
+    "module": { "type": "string", "enum": ["onboarding", "biosafety", "emergency", "experiment"] },
+    "experiment": { "type": "string", "description": "如 western-blot / pcr" },
+    "doc": { "type": "string", "description": "相对仓库根的 markdown 路径" },
+    "robot_ready": { "type": "boolean", "default": false }
+  },
+  "additionalProperties": false
+}
